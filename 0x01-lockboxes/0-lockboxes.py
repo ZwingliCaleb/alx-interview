@@ -26,18 +26,27 @@ def canUnlockAll(boxes: List[List[int]]) -> bool:
         visited[current_box] = True
 
         for key in boxes[current_box]:
-            if not visited[key]:
+            if 0 <= key < n and not visited[key]:
                 queue.append(key)
 
     return all(visited)
 
 
 if __name__ == "__main__":
-    boxes1 = [[1], [2], [3], [4], []]
-    print(canUnlockAll(boxes1))
+    boxes = [
+        [7, 5],
+        [1, 10, 7],
+        [9, 6, 10],
+        [7, 9],
+        [2],
+        [7, 3],
+        [7, 9, 10, 10, 8, 9, 2, 5],
+        [7, 2, 2, 4, 4, 2, 4, 8, 7],
+        [4, 2, 9, 6, 6, 5, 5]
+    ]
 
-    boxes2 = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
-    print(canUnlockAll(boxes2))
-
-    boxes3 = [[1, 4], [2], [0, 4, 1], [3], [], [4, 1], [5, 6]]
-    print(canUnlockAll(boxes3))
+    try:
+        result = canUnlockAll(boxes)
+        print(result)
+    except Exception as e:
+        print(f"An error occurred: {e}")
