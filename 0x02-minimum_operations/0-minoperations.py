@@ -1,29 +1,30 @@
-#!/usr/bin/python3
-
 def minOperations(n):
     """
-    Calculates the fewest number of operations needed to get 'n' H characters in a text file.
+    Calculate the minimum number of operations needed to obtain n H characters.
 
-    :param n: The desired number of H characters.
-    :return: The minimum number of operations required.
-             Returns 0 if achieving 'n' is impossible.
+    Args:
+        n (int): The target number of H characters.
+
+    Returns:
+        int: The minimum number of operations required.
     """
-
-    if n == 1:
+    if n <= 0:
         return 0
+    
+    operations = 0
+    divisor = 2
+    
+    while n > 1:
+        while n % divisor == 0:
+            operations += divisor
+            n //= divisor
+        divisor += 1
+    
+    return operations
 
-    dp = [0] * (n + 1)
+# Test cases
+n = 4
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 
-    for i in range(2, n + 1):
-        dp[i] = float('inf')  # Initialize with a large value
-        for j in range(1, int(i ** 0.5) + 1):
-            if i % j == 0:
-                dp[i] = min(dp[i], dp[j] + i // j - 1)
-                dp[i] = min(dp[i], dp[i // j] + j - 1)
-
-    return dp[n]
-
-# Example usage
-n = 9
-print(minOperations(n))  # Output: 6
-
+n = 12
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
