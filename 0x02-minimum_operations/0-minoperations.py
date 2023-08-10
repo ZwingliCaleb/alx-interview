@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Below is the module for minimum operations
+"""
+
+
 def minOperations(n):
     """
     Calculate the minimum number of operations needed to obtain n H characters.
