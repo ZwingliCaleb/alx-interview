@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" Prime Game Algorithm Python """
+""" Prime Game """
 
 
 def is_prime(n):
